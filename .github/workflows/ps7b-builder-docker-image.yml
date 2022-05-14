@@ -4,25 +4,42 @@ on:
   push:
     branches: [ master ]
 
+env:
+  DOCKERFILE: picoscope7beta-build-dockerfile
+  TAG: picoscope7beta
+
 jobs:
-  build:
+  build-and-push-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
       -
         name: Check Out Repo
         uses: actions/checkout@v3
+
       -
         name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      -
+        name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/${{ github.repository }}
+
       -
         name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: ./
-          file: ./picoscope7beta-build-dockerfile
+          file: ./${{ env.DOCKERFILE }}
           push: true
-          tags: gpregger/lightweight-build-docker:picoscope7beta
+          tags: ${{ github.actor }}/${{ github.repository }}:${{ env.TAG }}
