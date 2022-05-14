@@ -3,6 +3,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'picoscope7beta-build-dockerfile'
 
 env:
   DOCKERFILE: picoscope7beta-build-dockerfile
