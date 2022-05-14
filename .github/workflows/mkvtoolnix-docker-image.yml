@@ -20,6 +20,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: mkvtoolnix-dockerfile
+          file: ./mkvtoolnix-dockerfile
           push: true
           tags: gpregger/lightweight-build-docker:mkvtoolnix

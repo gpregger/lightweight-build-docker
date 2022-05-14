@@ -20,6 +20,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: picoscope7beta-build-dockerfile
+          file: ./picoscope7beta-build-dockerfile
           push: true
           tags: gpregger/lightweight-build-docker:picoscope7beta
