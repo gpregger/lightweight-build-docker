@@ -7,7 +7,8 @@ RUN curl -L https://archlinux.org/packages/community/x86_64/pacman-contrib/downl
     && echo "#!/bin/bash" > /etc/periodic/1min/test.sh \
     && echo "wall << End_Of_Message" >> /etc/periodic/1min/test.sh \
     && echo "Test Broadcast." >> /etc/periodic/1min/test.sh \
-    && echo "End_Of_Message" >> /etc/periodic/1min/test.sh \
-    && chmod +x /etc/periodic/1min/test.sh
+    && echo "End_Of_Message" >> /etc/periodic/1min/test.sh
 
-CMD cron
+RUN chmod 0744 /etc/periodic/1min/test.sh
+
+CMD ["cron", "-f"]
