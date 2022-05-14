@@ -1,6 +1,6 @@
 FROM alpine:latest
 RUN apk add --no-cache bash git pacman-makepkg curl tar zstd
-RUN curl https://archlinux.org/packages/community/x86_64/pacman-contrib/download --output pacman-contrib.pkg.tar.zst \
+RUN curl -L https://archlinux.org/packages/community/x86_64/pacman-contrib/download --output pacman-contrib.pkg.tar.zst \
     && tar --use-compress-program=unzstd -xvf pacman-contrib.pkg.tar.zst --exclude='.*' \
     && mkdir -p /etc/periodic/1min \
     && touch /etc/periodic/1min/test.sh \
