@@ -42,4 +42,4 @@ jobs:
           context: ./
           file: ./${{ env.DOCKERFILE }}
           push: true
-          tags: ${{ github.actor }}/${{ github.repository }}:${{ env.TAG }}
+          tags: ghcr.io/${{ github.repository }}:${{ env.TAG }}
