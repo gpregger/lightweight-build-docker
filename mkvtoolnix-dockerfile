@@ -6,7 +6,7 @@ RUN apk add --no-cache mkvtoolnix tree tzdata
 # Powershell https://docs.microsoft.com/en-us/powershell/scripting/install/install-alpine?view=powershell-7.2
 RUN apk add ca-certificates less ncurses-terminfo-base krb5-libs libgcc libintl libssl1.1 libstdc++ tzdata userspace-rcu zlib icu-libs curl
 RUN apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main add --no-cache lttng-ust \
-    && curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | grep "browser_download_url.*alpine-x64.tar.gz" | cut -d ":" -f 2,3 | tr -d \" | wget -qi - \
+    && wget -q $(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | grep 'browser_download_url.*alpine-x64.tar.gz' | cut -d ':' -f 2,3 | tr -d \") \
     && mkdir -p /opt/microsoft/powershell/7 \
     && tar zxf powershell*.tar.gz -C /opt/microsoft/powershell/7 \
     && rm -f powershell*.tar.gz \
