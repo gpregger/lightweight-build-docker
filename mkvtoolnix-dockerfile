@@ -12,5 +12,6 @@ RUN apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main add --no-cache lttng-
     && rm -f /powershell.tar.gz \
     && chmod +x /opt/microsoft/powershell/7/pwsh \
     && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+    && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/powershell
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
