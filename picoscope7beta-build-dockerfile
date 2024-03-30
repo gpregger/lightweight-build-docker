@@ -7,3 +7,4 @@ RUN curl -L https://archlinux.org/packages/community/x86_64/pacman-contrib/downl
 RUN ln -s /bin/bash /usr/bin/bash
 
 CMD /ps7b/config_container.sh && crond -f
+
