@@ -3,5 +3,4 @@ FROM alpine:latest
 # Tools
 RUN apk update && apk add --no-cache mkvtoolnix tree tzdata powershell
 
-#CMD /scripts/config_container.sh && exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
-CMD tail -f /dev/null
+CMD /scripts/config_container.sh && tail -f /dev/null
