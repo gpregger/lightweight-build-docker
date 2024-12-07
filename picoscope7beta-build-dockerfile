@@ -6,6 +6,4 @@ RUN curl -L https://archlinux.org/packages/extra/x86_64/pacman-contrib/download/
 
 RUN ln -s /bin/bash /usr/bin/bash
 
-ENTRYPOINT ["/usr/bin/bash", "/ps7b/config_container.sh", "&&", "crond -f"]
-CMD ["sleep", "infinity"]
-
+ENTRYPOINT ["/usr/bin/bash", "/ps7b/config_container.sh", "&&", "sleep infinity"]
